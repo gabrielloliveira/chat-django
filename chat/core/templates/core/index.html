@@ -21,28 +21,65 @@
       padding: 10px;
       overflow-y: scroll;
     }
+    .username{
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
-<section class="hero is-large">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title has-text-centered">Mensagens do Chat</h1>
-      <div class="content-messages">
-
-      </div>
-      <div class="field has-addons">
-        <div class="control is-expanded">
-          <input class="input" type="text" placeholder="Digite a mensagem">
-        </div>
-        <div class="control">
-          <a class="button is-link">
-            Enviar
-          </a>
+  <section class="hero is-large">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title has-text-centered">Mensagens do Chat</h1>
+        <div class="content-messages" id="chat-messages"></div>
+        <div class="field has-addons">
+          <div class="control is-expanded">
+            <input class="input" id="input-message" type="text" placeholder="Digite a mensagem">
+          </div>
+          <div class="control">
+            <a class="button is-link" id="submit-message">
+              Enviar
+            </a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <script>
+    let user = ""
+    document.addEventListener('DOMContentLoaded', () => {
+        user = prompt("Qual é o seu nome? ")
+    })
+
+    const chatSocket = new WebSocket('ws://localhost:8000/ws/chat/')
+
+    chatSocket.onmessage = function(e) {
+      const data = JSON.parse(e.data)
+      document.getElementById('chat-messages').innerHTML +=
+          "<span class='username'>"+ data.user +": </span>" +
+          data.message + '<br>'
+    }
+
+    chatSocket.onclose = function(e) {
+      console.error('Ocorreu um erro e o chat foi desconectado')
+    }
+
+    document.getElementById('input-message').focus()
+    document.getElementById('input-message').onkeyup = function(e) {
+      if (e.keyCode === 13) {
+        document.getElementById('submit-message').click()
+      }
+    }
+
+    document.getElementById('submit-message').addEventListener('click', (e) => {
+      const message = document.getElementById('input-message')
+      chatSocket.send(JSON.stringify({
+        'user': user,
+        'message':  message.value
+      }))
+      message.value = ''
+    })
+  </script>
 </body>
 </html>
