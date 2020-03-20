@@ -1,0 +1,48 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Bem vindo ao Chat da OhMyCode</title>
+  <link rel="stylesheet" href="{% static 'css/bulma.css' %}">
+  <style>
+    .hero.is-large .hero-body{
+      padding-top: 1rem;
+    }
+    .hero.is-large .container{
+      width: 600px;
+    }
+    .content-messages{
+      border: 1px solid #c4dce8;
+      display: block;
+      height: 500px;
+      padding: 10px;
+      overflow-y: scroll;
+    }
+  </style>
+</head>
+<body>
+<section class="hero is-large">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title has-text-centered">Mensagens do Chat</h1>
+      <div class="content-messages">
+
+      </div>
+      <div class="field has-addons">
+        <div class="control is-expanded">
+          <input class="input" type="text" placeholder="Digite a mensagem">
+        </div>
+        <div class="control">
+          <a class="button is-link">
+            Enviar
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>
