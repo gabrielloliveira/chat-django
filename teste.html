@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Client WS</title>
+</head>
+<body>
+<div id="status">
+  STATUS: CONECTADO
+</div>
+<h2>Eventos de atendimentos:</h2>
+<div id="log-helpdesk"></div>
+<h2>Eventos de mensagens do atendimento 12333:</h2>
+<div id="log-message"></div>
+<script>
+    const chatSocket = new WebSocket('ws://127.0.0.1:8000/ws/chat/');
+
+    chatSocket.onmessage = function (e) {
+        const data = JSON.parse(e.data);
+        console.log(data)
+        document.getElementById('log-helpdesk').innerText = e.data
+    };
+
+    chatSocket.onclose = function (e) {
+        const status = document.getElementById('status')
+        status.innerText = "STATUS: OFFLINE"
+    };
+
+</script>
+</body>
+</html>
