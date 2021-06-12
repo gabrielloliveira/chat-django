@@ -1,8 +1,10 @@
 from django.urls import path
-from . import views
+from . import viewsets
 
 app_name = 'core'
 
 urlpatterns = [
-    path('', views.index, name='index')
+    path('help-desks/', viewsets.HelpDesksList.as_view(), name='help-desks'),
+    path('help-desks/<uuid:uuid>/', viewsets.HelpDesksHistory.as_view(), name='help-desk-history'),
+    path('send-message/', viewsets.SendMessageView.as_view(), name='send-message'),
 ]
