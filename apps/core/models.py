@@ -22,6 +22,7 @@ class Client(DefaultBaseModel):
 
 class HelpDesk(DefaultBaseModel):
     client = models.ForeignKey(Client, verbose_name="Cliente", on_delete=models.CASCADE)
+    organization = models.CharField("Organização", max_length=255, default="org1")
 
     def __str__(self):
         return str(self.uuid)

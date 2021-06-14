@@ -9,7 +9,11 @@ from apps.core.tasks import handle_message
 
 class HelpDesksList(generics.ListAPIView):
     serializer_class = HelpDeskSerializer
-    queryset = HelpDesk.objects.order_by('-created_at')
+
+    def get_queryset(self):
+        if not self.request.GET.get("organization"):
+            return HelpDesk.objects.none()
+        return HelpDesk.objects.filter(organization=self.request.GET.get("organization")).order_by('-created_at')
 
 
 class HelpDesksHistory(generics.ListAPIView):

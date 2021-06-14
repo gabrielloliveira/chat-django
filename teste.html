@@ -16,7 +16,7 @@
 <h2>Eventos de mensagens dos atendimentos:</h2>
 <div id="log-message"></div>
 <script>
-    const chatSocket = new WebSocket('ws://127.0.0.1:8000/ws/chat/');
+    const chatSocket = new WebSocket('ws://127.0.0.1:8000/ws/chat/organization_name/');
 
     chatSocket.onmessage = function (e) {
         const data = JSON.parse(e.data);

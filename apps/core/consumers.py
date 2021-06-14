@@ -15,7 +15,8 @@ def serialize_queryset(data):
 
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
-        self.room_group_name = 'chat_room'
+        self.organization = self.scope['url_route']['kwargs']['organization']
+        self.room_group_name = f'organization_{self.organization}'
         await self.channel_layer.group_add(
             self.room_group_name,
             self.channel_name

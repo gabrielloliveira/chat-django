@@ -39,7 +39,7 @@ def update_message(sender, instance, created, **kwargs):
     if created:
         type_ = "new_message"
     channel_layer = get_channel_layer()
-    group_name = f'chat_room'
+    group_name = f'organization_{instance.organization}'
     async_to_sync(channel_layer.group_send)(
         group_name,
         {
