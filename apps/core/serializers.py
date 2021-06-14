@@ -1,10 +1,16 @@
 from rest_framework import serializers
 
-from apps.core.models import HelpDesk, Message
+from apps.core.models import HelpDesk, Message, Client
+
+
+class ClientSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Client
+        exclude = ("id", )
 
 
 class HelpDeskSerializer(serializers.ModelSerializer):
-    client = serializers.UUIDField(source="client.uuid", read_only=True)
+    client = ClientSerializer(many=False)
     last_message = serializers.SerializerMethodField()
 
     class Meta:
