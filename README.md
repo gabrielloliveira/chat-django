@@ -55,3 +55,6 @@ Esse projeto manda atualizacoes de mensagens do chat via websocket. Ele funciona
   - Ex.: O que é retornado no evento de update_help_desk é UM OBJETO desta rota ```GET /api/help-desks/```
   - Para eventos de mensagens, é retornado um objeto presente nesta rota ```GET /api/help-desks/<uuid>/history/```
 
+- Para se conectar ao WS, você deve colocar o link a seguir: ```ws://<dominio ou IP>/ws/chat/<organization_name>/```
+- Se o domínio ou IP possuir o HTTPS, o protocolo deverá ser o ```wss://```
+
