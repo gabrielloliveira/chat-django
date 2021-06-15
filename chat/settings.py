@@ -123,6 +123,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 ASGI_APPLICATION = 'chat.routing.application'
 
+CELERY_BROKER_URL = 'redis://localhost:6379'
+
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
