@@ -29,4 +29,4 @@ class MessageSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Message
-        fields = ("created_at", "updated_at", "uuid", "message", "file", "type", "help_desk",)
+        fields = ("created_at", "updated_at", "uuid", "message", "file", "type", "status", "help_desk",)
