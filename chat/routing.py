@@ -2,7 +2,7 @@ import os
 
 import django
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'bluml.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'chat.settings')
 django.setup()
 
 from channels.auth import AuthMiddlewareStack
