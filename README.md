@@ -27,10 +27,10 @@ Este é um simples modelo de DER que exemplifica como a aplicação está feita,
 
 ## 📱 Endpoints Importantes
 
-- Listar todos os atendimentos -> ```GET /api/help-desks/```
+- Listar todos os atendimentos -> ```GET /api/help-desks/?organization=<organization_name>```
 - Visualisar histórico de 1 atendimento -> ```GET /api/help-desks/<uuid>/history/```
 - Enviar Mensagem -> ```POST /api/send-message/```
-    - body: ```message: text; help_desk: <uuid_help_desk>; file: BinaryField;```
+    - body: ```message: text; help_desk: <uuid_help_desk>; file: (Opcional) BinaryField;```
 
 
 ## 🚀 Websocket
