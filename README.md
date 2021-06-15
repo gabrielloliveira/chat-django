@@ -32,6 +32,44 @@ Este é um simples modelo de DER que exemplifica como a aplicação está feita,
 - Enviar Mensagem -> ```POST /api/send-message/```
     - body: ```message: text; help_desk: <uuid_help_desk>; file: (Opcional) BinaryField;```
 
+- Exemplo de um objeto do tipo HelpDesk retornado no JSON:
+```json5
+{
+  "created_at": "2021-06-14T22:10:39.551836-03:00",
+  "updated_at": "2021-06-14T22:10:39.551868-03:00",
+  "uuid": "<um UUID aqui>",
+  "client": {
+    "uuid": "<UUID>",
+    "created_at": "2021-06-14T22:04:20.149704-03:00",
+    "updated_at": "2021-06-14T22:04:20.149734-03:00",
+    "name": "Nome do Cliente",
+    "phone": "123"
+  },
+  "last_message": {
+    "created_at": "2021-06-15T11:43:03.573855-03:00",
+    "updated_at": "2021-06-15T11:43:03.573908-03:00",
+    "uuid": "<UUID>",
+    "message": "Oi",
+    "file": null,
+    "type": "received",
+    "help_desk": "<UUID>"
+  }
+}
+```
+
+- Exemplo de um objeto do tipo Message retornado no JSON:
+```json5
+{
+    "created_at": "2021-06-15T11:57:16.420655-03:00",
+    "updated_at": "2021-06-15T11:57:19.582823-03:00",
+    "uuid": "<um UUID aqui>",
+    "message": "teste",
+    "file": null, // ou um caminho para um arquivo
+    "type": "sent", // pode ser sent ou received
+    "status": "sent", // pode ser sending ou sent
+    "help_desk": "<um UUID aqui>"
+  }
+```
 
 ## 🚀 Websocket
 
