@@ -52,6 +52,7 @@ Este é um simples modelo de DER que exemplifica como a aplicação está feita,
     "message": "Oi",
     "file": null,
     "type": "received",
+    "status": "sent",
     "help_desk": "<UUID>"
   }
 }
